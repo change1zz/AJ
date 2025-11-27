@@ -1,0 +1,20 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# IDE/editor
+.vscode/
+.idea/
+
+# Experiment outputs
+Large_scale_UAV/MARL_QMIX/result/
+Large_scale_UAV/MARL_QMIX/runs/
+Large_scale_UAV/MARL_QMIX/tmp_train_log.txt
+
+# Generated data/logs
+Large_scale_UAV/MARL_QMIX/*.pth
+*.log
+
+# OS artifacts
+*.DS_Store
+Thumbs.db

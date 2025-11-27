@@ -1,0 +1,51 @@
+{
+  "topology": {
+    "nodes": 32,
+    "avg_degree": 7.5,
+    "degree_list": [
+      5,
+      8,
+      4,
+      15,
+      10,
+      6,
+      2,
+      3,
+      8,
+      3,
+      2,
+      13,
+      4,
+      3,
+      9,
+      1,
+      4,
+      4,
+      11,
+      3,
+      14,
+      13,
+      14,
+      9,
+      10,
+      14,
+      4,
+      9,
+      12,
+      6,
+      5,
+      12
+    ],
+    "neighbor_threshold_km": 1.5,
+    "is_connected": true,
+    "is_3d": true,
+    "bridge_edge_count": 0,
+    "require_connected_flag": false,
+    "enforce_min_degree_flag": false,
+    "space_box_km": [
+      10.0,
+      10.0,
+      3.0
+    ]
+  }
+}

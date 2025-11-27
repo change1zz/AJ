@@ -1,0 +1,150 @@
+general:
+  seed: 123
+  replay_dir: ""
+  alg: qmix
+  n_agents: 16
+  n_actions: 600
+  state_shape: 57
+  obs_shape: 15
+  n_steps: 500000
+  episode_limit: 100
+  n_episodes: 1
+  last_action: true
+  reuse_network: false
+  gamma: 0.99
+  optimizer: RMS
+  evaluate_cycle: 20000
+  evaluate_epoch: 20
+  model_dir: "./model"
+  result_dir: "./result"
+  load_model: false
+  evaluate: false
+  cuda: true
+  use_env_clean: true
+
+hrl:
+  enable: true
+  meta_period: 10
+  masking_mode: fixed_channel_groups
+  topk_K: 0
+  upper_mode: graph
+  local_agg: mean
+  upper_lr: 0.0002
+  upper_entropy: 0.01
+  upper_entropy_min: 0.001
+  upper_entropy_decay: 0.999
+  upper_adv_norm: true
+  upper_adv_clip: 5.0
+  upper_beta: 0.7
+  cluster_enable: true
+  cluster_target_size: 6
+  cluster_refresh: 5
+  cluster_radius_km: 1.5
+  cluster_head_strategy: farthest
+  channel_groups_json: "[[0,1,2,3,4],[5,6,7,8,9],[10,11,12,13,14],[15,16,17,18,19],[20,21,22,23,24],[25,26,27,28,29],[30,31,32,33,34],[35,36,37,38,39]]"
+  group_assign_mode: mod
+  group_assignments_json: ""
+  group_rotate: false
+  group_rotate_period: 50
+  upper_log_every: 20
+  cluster_debug: true
+  cluster_debug_interval: 50
+
+topology:
+  use_sparse_comm_topology: false
+  comm_topology_require_connected: false
+  comm_topology_enforce_min_degree: false
+  topology_dataset_lock_sample: false
+  topology_dataset_sample: ""
+  topology_dataset_cache_size: 64
+
+mixer:
+  rnn_hidden_dim: 256
+  qmix_hidden_dim: 32
+  two_hyper_layers: true
+  hyper_hidden_dim: 64
+  qtran_hidden_dim: 64
+  lr: 0.0001
+  epsilon: 0.8
+  min_epsilon: 0.15
+  epsilon_anneal_steps: 100000
+  epsilon_anneal_scale: step
+  train_steps: 1
+  batch_size: 32
+  buffer_size: 1000
+  save_cycle: 30000
+  target_update_cycle: 400
+  lambda_opt: 1
+  lambda_nopt: 1
+  grad_norm_clip: 10
+  noise_dim: 16
+  lambda_mi: 0.001
+  lambda_ql: 1
+  entropy_coefficient: 0.001
+
+env:
+  map: train_10_10_1.json
+  ber_threshold: 0.00001
+  jam_distance: [5, 10]
+  all_bandwidth: 78
+  channel_bandwidth: 1.95
+  sub_band: 8
+  channels_per_subband: 5
+  channel_num: 40
+  jam_num: 2
+  jam_origin_power: 105.0
+  jam_sum_channel: 25
+  jam_type: ['narrow_band', 'comb_band', 'wide_band', 'linear_sweep', 'trace_jam']
+  jam_change_time: 5
+  use_alt_jam_model: false
+  alt_jam_change_time: 5
+  alt_jam_occ_prob: 0.35
+  use_reactive_jam: true
+  reactive_jam_prob: 0.9
+  reactive_jam_amp_dbm: 78.0
+  use_intelligent_jam: true
+  intel_jam_change_time: 10
+  intel_jam_topk: 5
+  log_topk_clean_channels: false
+  topk_clean_K: 5
+  topk_log_every_frames: 5
+  slot_ms: 1
+  frame_slots: 10
+  K: 5
+  alpha_leak: 0.05
+  R_comm: 250
+  obs_lag_window_L: 10
+  ewma_beta: 0.7
+  nodes: 4
+  com_max_distance: 10
+  space_box_km: [5.0, 5.0, 2.0]
+  comm_range_km: 1.0
+  use_graph_obs: true
+  graph_neighbor_threshold: 1.0
+  graph_obs_smooth_alpha: 0.8
+  mobility_model: gaussian
+  mobility_sigma_km: 0.05
+  mobility_reflect: true
+  rebuild_comm_each_step: true
+  gt: 3
+  noise_figure: 7
+  receive_Pth: -100
+  RA_action:
+    - qpsk_1_2
+    - qam16_1_2
+    - qam64_2_3
+    - qam64_5_6
+    - qam256_5_6
+  FH_action: null  # will be derived as range(channel_num)
+  Pt_action: [37, 40, 44]
+  frame_bit_length: 1024
+  packet_num:
+    qpsk_1_2: 6
+    qam16_1_2: 12
+    qam64_2_3: 24
+    qam64_5_6: 30
+    qam256_5_6: 40
+  topology_dataset_dir: "../datasets/topologies/16_nodes/3d_2025-10-28-17-26-47"
+
+bler:
+  data_path: "Bler_data.csv"
